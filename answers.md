@@ -1,450 +1,251 @@
-\# 📋 ANSWERS — PBT\_01 HTML Fundamentals
+#  ANSWERS — PBT_01 HTML Fundamentals
 
 
 
-\---
+---
 
+#  PHẦN A — KIỂM TRA ĐỌC HIỂU
 
+---
 
-\## PHẦN A
+##  Câu A1 — HTTP & Browser
 
+**Nguồn:** `01_introduction_html_universe.md` — Phần Browser & HTTP Flow
 
+### a) Các bước khi truy cập https://shopee.vn
 
-\### Câu A1
+1. Trình duyệt thực hiện **DNS Lookup** để tìm địa chỉ IP của `shopee.vn`
+2. Thiết lập kết nối **TCP (3-way handshake)**
+3. Thực hiện **TLS Handshake** để mã hóa HTTPS
+4. Gửi **HTTP Request (GET)** đến server
+5. Server trả về **HTTP Response** (HTML, CSS, JS)
+6. Trình duyệt parse HTML → tạo **DOM**
+7. Tải CSS → tạo **CSSOM**
+8. Kết hợp DOM + CSSOM → **Render Tree**
+9. Thực hiện **Layout → Paint → Composite** để hiển thị
 
+---
 
-
-\*\*a) Các bước xảy ra khi truy cập https://shopee.vn:\*\*
-
-
-
-Nguồn: 01\_introduction\_html\_universe.md
-
-
-
-1\. Trình duyệt thực hiện DNS Lookup để tìm địa chỉ IP của domain shopee.vn  
-
-2\. Thiết lập kết nối TCP với server (3-way handshake)  
-
-3\. Thực hiện TLS Handshake để mã hóa kết nối HTTPS  
-
-4\. Trình duyệt gửi HTTP Request (GET) đến server  
-
-5\. Server xử lý request và trả về HTTP Response (HTML, CSS, JS)  
-
-6\. Trình duyệt nhận dữ liệu, phân tích HTML để tạo DOM  
-
-7\. Tải CSS và tạo CSSOM  
-
-8\. Kết hợp DOM và CSSOM để tạo Render Tree  
-
-9\. Thực hiện Layout và Paint để hiển thị trang web  
-
-
-
-\---
-
-
-
-\*\*b) Tab Network trong DevTools:\*\*
-
-
+### b) Tab Network trong DevTools
 
 Tab Network cho phép:
 
+* Xem tất cả request (HTML, CSS, JS, images...)
+* Kiểm tra **Status Code** (200, 404, 500...)
+* Xem **thời gian load**
+* Xem **Headers và Response**
 
+**Screenshot:**
 
-\- Xem danh sách tất cả request (HTML, CSS, JS, hình ảnh...)  
+![Network Screenshot](screenshots/network.png)
 
-\- Kiểm tra Status Code (200, 404, 500...)  
+**Đánh dấu:**
 
-\- Xem thời gian load từng tài nguyên  
+* Status Code request đầu tiên
+* Tổng thời gian load
+* Một request file CSS
 
-\- Xem thông tin chi tiết như headers và response  
+---
 
+##  Câu A2 — Semantic HTML
 
+**Nguồn:** `04_semantic_html.md` — Phần Semantic Elements
 
-Yêu cầu thực hành:
+###  Lỗi semantic
 
-\- Chụp screenshot tab Network  
+1. Dùng `<div>` thay vì `<header>`
+2. Menu không dùng `<nav>`
+3. Không có `<main>`
+4. Sản phẩm không dùng `<article>`
+5. Không dùng heading (`<h1>`, `<h2>`)
+6. Không có `<footer>`
 
-\- Đánh dấu:
+---
 
-&#x20; - Status Code của request đầu tiên  
-
-&#x20; - Tổng thời gian load trang  
-
-&#x20; - Một request file CSS  
-
-
-
-\---
-
-
-
-\### Câu A2
-
-
-
-Nguồn: 04\_semantic\_html.md
-
-
-
-Trang web bị đánh giá SEO thấp vì không sử dụng semantic HTML đúng cách.
-
-
-
-\*\*Các lỗi semantic:\*\*
-
-
-
-1\. Dùng <div> thay vì <header>  
-
-2\. Menu không dùng <nav> 
-
-3\. Nội dung chính không dùng <main> 
-
-4\. Sản phẩm không dùng <article> 
-
-5\. Tiêu đề không dùng thẻ heading (<h1>, <h2>)  
-
-6\. Footer không dùng <footer>  
-
-
-
-\---
-
-
-
-\*\*Code sửa:\*\*
-
-
+###  Code sửa
 
 ```html
-
 <header>
-
-&#x20;   <h1>ShopTLU</h1>
-
-&#x20;   <nav>
-
-&#x20;       <a href="/">Trang chủ</a>
-
-&#x20;       <a href="/products">Sản phẩm</a>
-
-&#x20;   </nav>
-
+    <h1>ShopTLU</h1>
+    <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/products">Sản phẩm</a>
+    </nav>
 </header>
 
-
-
 <main>
+    <article>
+        <h2>iPhone 16 Pro</h2>
+        <p>25.990.000đ</p>
 
-&#x20;   <article>
-
-&#x20;       <h2>iPhone 16 Pro</h2>
-
-&#x20;       <p>25.990.000đ</p>
-
-&#x20;       <figure>
-
-&#x20;           <img src="iphone.jpg" alt="iPhone 16 Pro">
-
-&#x20;       </figure>
-
-&#x20;   </article>
-
+        <figure>
+            <img src="iphone.jpg" alt="iPhone 16 Pro">
+            <figcaption>iPhone 16 Pro</figcaption>
+        </figure>
+    </article>
 </main>
 
-
-
 <footer>
-
-&#x20;   <p>© 2026 ShopTLU</p>
-
+    <p>&copy; 2026 ShopTLU</p>
 </footer>
+```
 
+---
 
+##  Câu A3 — Block vs Inline
 
-\### Câu A3
+**Nguồn:** `01_introduction_html_universe.md` — Phần Block vs Inline
 
-Kết quả hiển thị:
+###  Kết quả hiển thị
 
 Hộp 1
-
-
-
 Text A Text B
 
-
-
 Hộp 2
-
-
-
 Text C Text D
-
-
 
 Hộp 3
 
+###  Giải thích
 
+* `<div>` là **block element** → luôn xuống dòng
+* `<span>`, `<strong>` là **inline element** → hiển thị cùng dòng
+* Vì vậy các text A, B, C, D nằm cùng dòng theo từng nhóm
 
-Giải thích:
+---
 
+##  Câu A4 — Table
 
+**Nguồn:** `05_tables_hyperlinks.md` — Phần Table Structure
 
-\-Thẻ <div> là block element nên luôn xuống dòng
+###  Phân biệt
 
-\-Thẻ <span> và <strong> là inline nên hiển thị cùng dòng
+* `<thead>`: chứa tiêu đề bảng
+* `<tbody>`: chứa dữ liệu chính
+* `<tfoot>`: chứa phần tổng kết
 
-\-Vì vậy các đoạn text A, B, C, D nằm cùng dòng theo từng nhóm
+###  Không nên dùng table để layout vì:
 
+* Không responsive (khó thích ứng mobile)
+* Code khó đọc, khó bảo trì
+* Không tốt cho SEO
+* Accessibility kém (screen reader khó hiểu)
 
+---
 
-\### Câu A4
+#  PHẦN C — SUY LUẬN
 
+---
 
+##  Câu C1 — Thiết kế cấu trúc
 
-Nguồn: 05\_tables\_hyperlinks.md
-
-
-
-Sự khác nhau:
-
-\-<thead>: chứa tiêu đề bảng
-
-\-<tbody>: chứa dữ liệu chính
-
-\-<tfoot>: chứa phần tổng kết
-
-
-
-Không nên dùng table làm layout vì:
-
-\-Không responsive tốt
-
-\-Code khó đọc và khó bảo trì
-
-\-Không tốt cho SEO
-
-\-Accessibility kém
-
-
-
-\## PHẦN C
-
-\### Câu C1
-
-
-
-<!DOCTYPE html>
-
-<html lang="vi">
-
-<head>
-
-&#x20;   <meta charset="UTF-8">
-
-&#x20;   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-&#x20;   <title>Chi tiết sản phẩm</title>
-
-</head>
-
-<body>
-
-
-
+```html
 <header>
-
-&#x20;   <h1><a href="#">ShopLogo</a></h1>
-
-&#x20;   <nav aria-label="main navigation">
-
-&#x20;       <ul>
-
-&#x20;           <li><a href="#">Trang chủ</a></li>
-
-&#x20;           <li><a href="#">Danh mục</a></li>
-
-&#x20;       </ul>
-
-&#x20;   </nav>
-
+    <!-- Header chứa logo + navigation -->
+    <nav>
+        <a href="#">Trang chủ</a>
+        <a href="#">Danh mục</a>
+    </nav>
 </header>
 
-
-
 <nav aria-label="breadcrumb">
-
-&#x20;   <ol>
-
-&#x20;       <li><a href="#">Trang chủ</a></li>
-
-&#x20;       <li><a href="#">Điện thoại</a></li>
-
-&#x20;       <li>iPhone 16</li>
-
-&#x20;   </ol>
-
+    <!-- Breadcrumb navigation -->
+    <ol>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Điện thoại</a></li>
+        <li>iPhone 16</li>
+    </ol>
 </nav>
-
-
 
 <main>
 
-
-
 <section>
-
-&#x20;   <h2>Hình ảnh sản phẩm</h2>
-
-&#x20;   <img src="#" alt="Ảnh 1">
-
-&#x20;   <img src="#" alt="Ảnh 2">
-
-&#x20;   <img src="#" alt="Ảnh 3">
-
-&#x20;   <img src="#" alt="Ảnh 4">
-
-&#x20;   <img src="#" alt="Ảnh 5">
-
+    <h2>Hình ảnh sản phẩm</h2>
+    <img src="#" alt="Ảnh 1">
+    <img src="#" alt="Ảnh 2">
+    <img src="#" alt="Ảnh 3">
+    <img src="#" alt="Ảnh 4">
+    <img src="#" alt="Ảnh 5">
 </section>
 
-
-
 <section>
-
-&#x20;   <h1>iPhone 16</h1>
-
-&#x20;   <p>25.990.000đ</p>
-
-&#x20;   <p>★★★★☆</p>
-
-&#x20;   <p>Mô tả sản phẩm</p>
-
+    <h1>iPhone 16</h1>
+    <p>25.990.000đ</p>
+    <p>★★★★☆</p>
+    <p>Mô tả sản phẩm</p>
 </section>
 
-
-
 <section>
-
-&#x20;   <h2>Thông số kỹ thuật</h2>
-
-&#x20;   <table>
-
-&#x20;       <thead>
-
-&#x20;           <tr>
-
-&#x20;               <th>Thông số</th>
-
-&#x20;               <th>Chi tiết</th>
-
-&#x20;           </tr>
-
-&#x20;       </thead>
-
-&#x20;       <tbody>
-
-&#x20;           <tr>
-
-&#x20;               <td>Chip</td>
-
-&#x20;               <td>A18</td>
-
-&#x20;           </tr>
-
-&#x20;       </tbody>
-
-&#x20;   </table>
-
+    <h2>Thông số kỹ thuật</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Thông số</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Chip</td>
+                <td>A18</td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
-
-
 <section>
-
-&#x20;   <h2>Đánh giá</h2>
-
-&#x20;   <article>
-
-&#x20;       <h3>Người dùng</h3>
-
-&#x20;       <p>Rất tốt</p>
-
-&#x20;   </article>
-
+    <h2>Đánh giá</h2>
+    <article>
+        <h3>Người dùng</h3>
+        <p>Rất tốt</p>
+    </article>
 </section>
-
-
 
 <aside>
-
-&#x20;   <h2>Sản phẩm tương tự</h2>
-
+    <h2>Sản phẩm tương tự</h2>
 </aside>
-
-
 
 </main>
 
-
-
 <footer>
-
-&#x20;   <p>\&copy; 2026 Shop</p>
-
+    <p>&copy; 2026 Shop</p>
 </footer>
+```
 
+---
 
+##  Câu C2 — Tranh luận
 
-</body>
+Việc sử dụng semantic HTML thay vì chỉ dùng `<div>` mang lại nhiều lợi ích quan trọng.
 
-</html>
+* **SEO:** Công cụ tìm kiếm hiểu nội dung tốt hơn nhờ các thẻ như `<header>`, `<article>`, `<main>`
+* **Accessibility:** Screen reader xác định đúng cấu trúc (ví dụ `<nav>`, `<article>`)
+* **Maintainability:** Code rõ ràng, dễ bảo trì
 
+**Ví dụ:**
+Khi sản phẩm nằm trong `<article>`, Google hiểu đó là một nội dung độc lập.
+Google dùng semantic để crawl tốt hơn
+Screen reader đọc theo landmark
+Ví dụ cụ thể hơn (Tiki/Shopee)
 
+ Tuy nhiên, `<div>` vẫn cần khi chỉ dùng cho layout hoặc CSS.
 
-\### Câu C2
+---
 
+#  PHẦN B3 — DEBUG HTML
 
+**Nguồn:** Tổng hợp từ tài liệu 01 → 05
 
-\-Việc sử dụng semantic HTML thay vì chỉ dùng thẻ div mang lại nhiều lợi ích quan trọng. Về SEO, các công cụ tìm kiếm như Google sử dụng cấu trúc semantic để hiểu nội dung trang web tốt hơn, từ đó cải thiện thứ hạng tìm kiếm. Về accessibility, các công cụ hỗ trợ như screen reader có thể đọc nội dung chính xác hơn nhờ các thẻ như header, nav, article.
+* Dòng 1 — `<!DOCTYPE>` sai → sửa thành `<!DOCTYPE html>`
+* Dòng 4 — thiếu `</title>`
+* Dòng 5 — `utf8` → `utf-8`
+* Dòng 8 — `<h1>` không đóng đúng
+* Dòng 12 — `<a>` không đóng
+* Dòng 18 — `<img>` thiếu dấu `"`
+* Dòng 20 — `<b>` → dùng `<strong>`
+* Table thiếu `<thead>` và `<tbody>`
+* Có 2 thẻ `<main>` → thay 1 bằng `<aside>`
+* Footer `<p>` chưa đóng
+* `<img>` thiếu thuộc tính `alt`
 
-
-
-\-Ví dụ, khi sử dụng thẻ <article> cho một sản phẩm, công cụ tìm kiếm có thể hiểu đây là một nội dung độc lập.
-
-
-
-\-Tuy nhiên, thẻ <div> vẫn hữu ích trong các trường hợp chỉ cần container để áp dụng CSS mà không mang ý nghĩa nội dung.
-
-
-
-\## PHẦN B3 — Debug HTML
-
-1\.<!DOCTYPE> sai → sửa thành <!DOCTYPE html>
-
-2\.Thiếu </title>
-
-3.charset="utf8" → sửa thành utf-8
-
-4\.<h1> không đóng
-
-5\.<a> không đóng
-
-6\.<img> thiếu dấu ngoặc kép
-
-7\.<b> đóng sai → dùng <strong>
-
-8\.Table thiếu <thead> và <tbody>
-
-9\.Có 2 thẻ <main> → thay 1 bằng <aside>
-
-10.<p> trong footer chưa đóng
-
-11\.Thiếu thuộc tính alt cho <img>
-
-
-
+---
