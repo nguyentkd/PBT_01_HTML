@@ -224,9 +224,13 @@ Việc sử dụng semantic HTML thay vì chỉ dùng `<div>` mang lại nhiều
 
 **Ví dụ:**
 Khi sản phẩm nằm trong `<article>`, Google hiểu đó là một nội dung độc lập.
-Google dùng semantic để crawl tốt hơn
-Screen reader đọc theo landmark
-Ví dụ cụ thể hơn (Tiki/Shopee)
+
+Google dùng semantic để crawl tốt hơn.
+
+Screen reader đọc theo landmark.
+
+Ví dụ cụ thể hơn (Tiki/Shopee).
+
 
  Tuy nhiên, `<div>` vẫn cần khi chỉ dùng cho layout hoặc CSS.
 
