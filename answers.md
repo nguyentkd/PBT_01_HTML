@@ -254,3 +254,62 @@ Ví dụ cụ thể hơn (Tiki/Shopee).
 * `<img>` thiếu thuộc tính `alt`
 
 ---
+
+
+#  PHẦN B4 - Phân tích trang web thật(Shopee.vn)
+---
+
+## 1. Phân tích Semantic HTML
+
+**Screenshot:**
+
+![Semantic](screenshots/semantic.png)
+
+### Các thẻ semantic HTML5 tìm được:
+
+- Có sử dụng `<footer>` với role="contentinfo"
+- Có sử dụng `<form>` cho chức năng tìm kiếm
+
+### Các thẻ KHÔNG dùng đúng semantic:
+
+- Phần header không dùng `<header>` mà sử dụng `<div>`
+- Phần điều hướng không dùng `<nav>`
+- Sản phẩm không dùng `<article>`
+- Không thấy `<main>` bao nội dung chính
+
+=> Trang chủ yếu sử dụng `<div>` để xây dựng layout (SPA - React)
+
+---
+
+## 2. Phân tích Table
+
+Trang không sử dụng thẻ `<table>` trong nội dung chính.
+
+Kết quả tìm kiếm trong DevTools không cho thấy table dùng để hiển thị dữ liệu.
+
+---
+
+## 3. Phân tích Form
+
+**Screenshot:**
+
+![Form](screenshots/form.png)
+
+### Thông tin form:
+
+<form role="search" autocomplete="off" class="shopee-searchbar">
+
+### Thuộc tính:
+
+- role="search"
+- autocomplete="off"
+- Không thấy method và action (xử lý bằng JavaScript)
+
+### Input types được sử dụng:
+
+- type="text" (ô tìm kiếm)
+- type="submit" (nút tìm kiếm)
+
+=> Shopee sử dụng form nhưng xử lý bằng JavaScript thay vì submit truyền thống.
+
+---
